@@ -22,4 +22,14 @@ class ApiController extends Controller
             "projects" => $projects
         ]);
     }
+
+
+    public function AppDetailsProjects($id){
+
+        $project = Project :: FindOrFail($id);
+
+        return response() -> json([
+            "projects" => $projects
+        ]);
+    }
 }

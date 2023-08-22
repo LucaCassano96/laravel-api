@@ -20,7 +20,8 @@
 
                 <h2 class="my-4">Modifica un progetto</h2>
 
-                <form method="POST" action="{{ route('logged.update', $project->id) }}">
+                <form method="POST" action="{{ route('logged.update', $project->id) }}"
+                enctype="multipart/form-data">
 
                     @csrf
                     @method('PUT')
@@ -38,7 +39,7 @@
 
 
                     <div class="form-floating">
-                        <input type="text" class="form-control" placeholder="inserisci un'immagine" name="image"
+                        <input type="file" class="form-control" placeholder="inserisci un'immagine" name="image"
                             value="{{ $project->image }}">
                         <label for="floatingPassword">Inserisci un'immagine</label>
                     </div>

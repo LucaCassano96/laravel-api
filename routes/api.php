@@ -8,7 +8,13 @@ use App\Http\Controllers\Api\ApiController;
 Route :: prefix("/v1") -> group (function(){
     Route :: get("/test-api", [ApiController :: class, 'testApi']);
     Route :: get("/projectIndex-api", [ApiController :: class, 'projectsIndex']);
+    
+    Route :: get("/AppDetailsProjects/{id}", [ApiController :: class, "AppDetailsProjects"]);
 });
+
+
+
+
 
 
 
