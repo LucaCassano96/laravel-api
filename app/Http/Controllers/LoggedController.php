@@ -85,7 +85,7 @@ class LoggedController extends Controller
         $validatedData = $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'image' => 'required',
+            'image' => 'nullable',
             'budget' => 'required',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',
@@ -94,8 +94,23 @@ class LoggedController extends Controller
         ]);
 
             $data = $request -> all();
-
             $project = Project :: findOrFail($id);
+
+            if (!array_key_exists("image", $data)) {
+                $data["image"] = $project -> image;
+
+            }else{
+                $oldImgPath = $project -> image;
+
+                if ($oldImgPath) {
+                    Storage :: delete($oldImgPath);
+                }
+
+                $img_path = Storage::put("uploads", $data["image"]);
+                $data["image"] = $img_path;
+            }
+
+
 
             $project -> update($data);
 

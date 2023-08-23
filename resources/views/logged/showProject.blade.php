@@ -58,7 +58,7 @@
 
                                     </ul>
                                 @else
-                                Nessuna tecnologia selezionata
+                                    Nessuna tecnologia selezionata
                                 @endif
 
                             </li>
@@ -115,9 +115,12 @@
                 </div>
                 <div class="col-md-4">
 
+                    @if ($project->image)
+                        <img src="{{ asset('storage/' . $project->image) }}" class="col-12 object-fit-cover border rounded"
+                            alt="project-image" style="min-height: 400px">
+                    @endif
 
-                    <img src="{{ asset('storage/' . $project -> image) }}" class="col-12 object-fit-cover border rounded"
-                        alt="project-image" style="min-height: 400px">
+
 
 
 

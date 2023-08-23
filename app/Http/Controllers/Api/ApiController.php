@@ -24,12 +24,12 @@ class ApiController extends Controller
     }
 
 
-    public function AppDetailsProjects($id){
+    public function AppDetailsProject($id){
 
-        $project = Project :: FindOrFail($id);
+        $project = Project::with('type')->find($id);
 
         return response() -> json([
-            "projects" => $projects
+            "project" => $project
         ]);
     }
 }
